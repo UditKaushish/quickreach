@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QuickReach
 
-## Getting Started
+Marketing website for QuickReach, a digital agency offering website development, brand marketing and AI chatbot integration.
 
-First, run the development server:
+## Stack
+
+- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS
+- **Backend**: Express and Nodemailer, a single endpoint that emails contact-form submissions
+
+## Structure
+
+| Path | Contents |
+|---|---|
+| `app/` | Pages and sections: Hero, Services, About, Why Us, Portfolio, Team, Contact, ChatBot |
+| `backend/` | Express server exposing `POST /send-email` |
+
+## Run locally
+
+Frontend:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site runs at http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Backend (needed for the contact form):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd backend
+npm install
+cp .env.example .env   # then fill in EMAIL_USER and EMAIL_PASS
+node server.js
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The server runs at http://localhost:5000. `EMAIL_PASS` must be a Gmail app password, not your account password.
